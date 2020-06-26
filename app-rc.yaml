@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: app-rc
+spec:
+    replicas: 3
+    selector:
+      app: app-rest
+
+    template:
+      metadata:
+        name: app-pod
+        labels:
+          app: app-rest
+      spec:
+        containers:
+          - name: app-container
+            image: app-test2
+            ports:
+            - containerPort:80
